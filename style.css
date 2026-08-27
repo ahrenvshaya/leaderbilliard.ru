@@ -1,0 +1,985 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,
+body {
+    overflow-x: hidden;
+    background: #000000;
+    color: #e0e0e0;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+}
+img {
+    max-width: 100%;
+    display: block;
+    height: auto;
+}
+a {
+    text-decoration: none;
+    color: #e0e0e0;
+}
+ul {
+    list-style: none;
+}
+.container {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ===== ВЕРХНЯЯ ШАПКА ===== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    background: rgba(10, 10, 10, 0.92);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(6px);
+    padding: 0 16px;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    max-width: 100%;
+    padding: 0;
+}
+
+/* Левый логотип */
+.header-left {
+    flex: 0 0 auto;
+}
+
+.header-left img {
+    height: 32px;
+    width: auto;
+    display: block;
+}
+
+/* Текст по центру */
+.header-title {
+    flex: 1 1 auto;
+    text-align: center;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    padding: 0 10px;
+}
+
+/* Правый логотип */
+.header-right {
+    flex: 0 0 auto;
+}
+
+.header-right img {
+    height: 32px;
+    width: auto;
+    display: block;
+}
+
+/* ===== Адаптив ===== */
+max-width: 480px {
+    .header .container {
+        height: 50px;
+    }
+    .header-title {
+        font-size: 13px;
+        letter-spacing: 0.8px;
+    }
+    .header-left img,
+    .header-right img {
+        height: 24px;
+    }
+}
+
+max-width: 380px {
+    .header-title {
+        font-size: 11px;
+        letter-spacing: 0.5px;
+    }
+    .header-left img,
+    .header-right img {
+        height: 20px;
+    }
+    .header {
+        padding: 0 10px;
+    }
+}
+
+min-width: 600px {
+    .header-title {
+        font-size: 22px;
+    }
+    .header-left img,
+    .header-right img {
+        height: 40px;
+    }
+    .header .container {
+        height: 70px;
+    }
+}
+.menu {
+    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    background: #0b0b0b;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    gap: 16px;
+    border-top: 1px solid #c9a84c;
+}
+.menu.open {
+    display: flex;
+}
+.menu a {
+    color: #c9a84c;
+    font-size: 16px;
+    transition: 0.3s;
+    letter-spacing: 0.5px;
+}
+.menu a:hover {
+    color: #f5d78c;
+}
+.menu-btn {
+    display: block;
+    background: none;
+    border: none;
+    color: #c9a84c;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 0 4px;
+}
+
+/* ===== ГЕРОЙ ===== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: url('img/3.jpg') center/cover no-repeat;
+    position: relative;
+    padding: 80px 0 50px;
+}
+
+/* Затемнение поверх картинки */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 1;
+}
+
+/* Контент поверх затемнения */
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
+.hero-content {
+    width: 100%;
+}
+.hero-logo {
+    width: 100px;
+    margin: 0 auto 16px;
+}
+.hero-logo img {
+    width: 100%;
+}
+.hero h1 {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #ffffff;
+    line-height: 1.2;
+}
+.hero h1 span {
+    color: #c9a84c;
+}
+.hero-subtitle {
+    font-size: 14px;
+    color: #b0b0b0;
+    margin: 8px 0 24px;
+    letter-spacing: 0.5px;
+    padding: 0 10px;
+}
+/* ============================================================
+   ИКОНКИ СОЦСЕТЕЙ В ГЕРОЕ (ПНГ, БЕЗ РАМОК, ПОБОЛЬШЕ)
+   ============================================================ */
+
+.hero-socials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin: 24px 0 28px;
+    flex-wrap: nowrap;
+}
+
+.hero-socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.hero-socials a:hover {
+    transform: scale(1.15);
+}
+
+.hero-socials img {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    display: block;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+/* ===== Адаптив ===== */
+max-width: 480px {
+    .hero-socials {
+        gap: 18px;
+        margin: 18px 0 22px;
+    }
+    .hero-socials img {
+        width: 44px;
+        height: 44px;
+    }
+}
+
+max-width: 380px {
+    .hero-socials {
+        gap: 14px;
+        margin: 14px 0 18px;
+    }
+    .hero-socials img {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+min-width: 600px {
+    .hero-socials img {
+        width: 68px;
+        height: 68px;
+    }
+    .hero-socials {
+        gap: 30px;
+    }
+}
+.btn {
+    display: inline-block;
+    padding: 12px 32px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.8px;
+    transition: 0.3s;
+    text-align: center;
+    cursor: pointer;
+}
+.btn-outline {
+    background: transparent;
+    border: 1.5px solid #c9a84c;
+    color: #c9a84c;
+}
+.btn-outline:hover {
+    background: #c9a84c;
+    color: #0a0a0a;
+}
+.btn-primary {
+    background: #c9a84c;
+    border: none;
+    color: #0a0a0a;
+}
+.btn-primary:hover {
+    background: #f5d78c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(201, 168, 76, 0.3);
+}
+
+/* ===== ЗАГОЛОВКИ СЕКЦИЙ ===== */
+section {
+    padding: 44px 0 36px;
+}
+section h2 {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    color: #ffffff;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+}
+
+/* ===== СТОЛЫ И ЦЕНЫ ===== */
+.tables {
+    padding-top: 20px;
+}
+.tables .btn {
+    display: block;
+    max-width: 280px;
+    margin: 28px auto 0;
+}
+.price-block {
+    background: #111111;
+    border: 1px solid #2a4a2a;
+    border-radius: 10px;
+    padding: 18px 18px 14px;
+    margin-bottom: 16px;
+}
+.price-block h3 {
+    color: #c9a84c;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    margin-bottom: 12px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid #1a1a1a;
+}
+.price-row:last-of-type {
+    border-bottom: none;
+}
+.price-row .time {
+    color: #cccccc;
+    font-size: 13px;
+}
+.pricerow .cost {
+    color: #c9a84c;
+    font-weight: 700;
+    font-size: 14px;
+}
+.tables-count {
+    text-align: center;
+    font-size: 12px;
+    color: #888888;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #1a3a1a;
+    letter-spacing: 0.5px;
+}
+
+/* ===== КУХНЯ И БАР ===== */
+.kitchen {
+    text-align: center;
+    padding-bottom: 30px;
+}
+.kitchen-desc {
+    color: #cccccc;
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 340px;
+    margin: 0 auto 24px;
+    padding: 0 4px;
+}
+
+/* ===== КОНТАКТЫ ===== */
+.contacts {
+    padding-bottom: 28px;
+}
+.contacts-list {
+    max-width: 340px;
+    margin: 0 auto;
+}
+.contacts-list p {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #cccccc;
+    font-size: 15px;
+    padding: 8px 0;
+    border-bottom: 1px solid #1a1a1a;
+}
+.contacts-list p:last-child {
+    border-bottom: none;
+}
+.contacts-list .icon {
+    color: #c9a84c;
+    font-size: 18px;
+    width: 28px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/* ===== ПОДВАЛ ===== */
+.footer {
+    border-top: 1px solid #1a3a1a;
+    background: #080808;
+    padding: 18px 0 20px;
+    text-align: center;
+}
+.footer p {
+    color: #666666;
+    font-size: 11px;
+    letter-spacing: 0.3px;
+}
+
+/* ============================================================
+   АДАПТИВ ДЛЯ ПЛАНШЕТОВ
+   ============================================================ */
+
+min-width: 600px {
+    .container {
+        max-width: 600px;
+    }
+    .hero h1 {
+        font-size: 32px;
+    }
+    .hero-subtitle {
+        font-size: 16px;
+    }
+    .price-block {
+        padding: 24px 24px 18px;
+    }
+    .price-block h3 {
+        font-size: 16px;
+    }
+    .price-row .time {
+        font-size: 15px;
+    }
+    .price-row .cost {
+        font-size: 16px;
+    }
+    .kitchen-desc {
+        font-size: 17px;
+        max-width: 460px;
+    }
+    section h2 {
+        font-size: 24px;
+    }
+}
+
+min-width: 768px {
+    .menu {
+        display: flex !important;
+        position: static;
+        flex-direction: row;
+        background: transparent;
+        border: none;
+        padding: 0;
+        gap: 28px;
+        width: auto;
+    }
+    .menu a {
+        font-size: 14px;
+    }
+    .menu-btn {
+        display: none !important;
+    }
+    .container {
+        max-width: 900px;
+        padding: 0 30px;
+    }
+    .hero h1 {
+        font-size: 40px;
+    }
+    .hero-logo {
+        width: 140px;
+    }
+}
+
+min-width: 1024px {
+    .container {
+        max-width: 1100px;
+    }
+    .hero h1 {
+        font-size: 52px;
+    }
+    .hero-subtitle {
+        font-size: 20px;
+    }
+    .price-block {
+        padding: 28px 32px 22px;
+    }
+    .price-block h3 {
+        font-size: 18px;
+    }
+    .price-row .time {
+        font-size: 16px;
+    }
+    .price-row .cost {
+        font-size: 18px;
+    }
+}
+
+/* ============================================================
+   МЕЛКИЕ ТЕЛЕФОНЫ
+   ============================================================ */
+
+max-width: 380px {
+    .container {
+        padding: 0 14px;
+    }
+    .hero h1 {
+        font-size: 20px;
+    }
+    .hero-subtitle {
+        font-size: 12px;
+    }
+    .btn {
+        padding: 10px 24px;
+        font-size: 12px;
+    }
+    .price-block h3 {
+        font-size: 12px;
+    }
+    .price-row .time {
+        font-size: 12px;
+    }
+    .price-row .cost {
+        font-size: 13px;
+    }
+    .kitchen-desc {
+        font-size: 14px;
+    }
+    .contacts-list p {
+        font-size: 14px;
+    }
+    .header .container {
+        height: 56px;
+    }
+    .logo img {
+        height: 34px;
+    }
+}
+
+.social-block {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+    background: #000;
+
+}
+
+.social-icons {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    display: block;
+}
+
+/* ============================================================
+   КАРТА (ПО ЦЕНТРУ, СКРУГЛЕННЫЕ УГЛЫ)
+   ============================================================ */
+
+.map {
+    width: 100%;
+    max-width: 480px;
+    margin: 30px auto 20px;
+    padding: 0 16px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: none;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
+}
+
+.map iframe {
+    width: 100%;
+    height: 220px;
+    border: none;
+    display: block;
+    border-radius: 12px;
+}
+
+/* ===== Адаптив ===== */
+max-width: 480px {
+    .map {
+        border-radius: 12px;
+        padding: 0 12px;
+        margin: 20px auto 16px;
+    }
+    .map iframe {
+        height: 180px;
+    }
+}
+
+min-width: 600px {
+    .map {
+        max-width: 600px;
+    }
+    .map iframe {
+        height: 280px;
+    }
+}
+
+min-width: 768px {
+    .map {
+        max-width: 700px;
+    }
+    .map iframe {
+        height: 320px;
+    }
+}
+
+/* ============================================================
+   О НАС (С КАРТИНКОЙ НА ФОНЕ)
+   ============================================================ */
+
+.about-club {
+    padding: 60px 0;
+    background: url('img/2.jpg') center/cover no-repeat;
+    position: relative;
+    text-align: center;
+}
+
+/* Затемнение */
+.about-club::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+/* Контент поверх затемнения */
+.about-club .container {
+    position: relative;
+    z-index: 2;
+}
+
+.about-club-content {
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.about-club h2 {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.about-club p {
+    color: #d0d0d0;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* ===== Адаптив ===== */
+max-width: 480px {
+    .about-club {
+        padding: 40px 0;
+    }
+    .about-club h2 {
+        font-size: 20px;
+    }
+    .about-club p {
+        font-size: 14px;
+    }
+}
+
+min-width: 600px {
+    .about-club-content {
+        max-width: 600px;
+    }
+    .about-club h2 {
+        font-size: 30px;
+    }
+    .about-club p {
+        font-size: 18px;
+    }
+}
+
+/* ============================================================
+   КУХНЯ И БАР (С КАРТИНКОЙ НА ФОНЕ)
+   ============================================================ */
+
+.kitchen {
+    padding: 60px 0;
+    background: url('img/4.jpg') center/cover no-repeat;
+    position: relative;
+    text-align: center;
+}
+
+/* Затемнение */
+.kitchen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+/* Контент поверх затемнения */
+.kitchen .container {
+    position: relative;
+    z-index: 2;
+}
+
+.kitchen-content {
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.kitchen h2 {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.kitchen p {
+    color: #d0d0d0;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* ============================================================
+   БЕГУЩАЯ ПОЛОСКА-РАЗДЕЛИТЕЛЬ (⭐)
+   ============================================================ */
+
+.divider {
+    width: 100%;
+    overflow: hidden;
+    background: #0a0a0a;
+    padding: 10px 0;
+    border-top: 1px solid #c9a84c;
+    border-bottom: 1px solid #c9a84c;
+}
+
+.divider-track {
+    display: flex;
+    gap: 30px;
+    animation: scrollDivider 15s linear infinite;
+    white-space: nowrap;
+    font-size: 20px;
+    letter-spacing: 10px;
+    color: #c9a84c;
+}
+
+.divider-track span {
+    display: inline-block;
+}
+
+/* Анимация бегущей строки */
+@keyframes scrollDivider {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* ===== Адаптив ===== */
+max-width: 480px {
+    .kitchen {
+        padding: 40px 0;
+    }
+    .kitchen h2 {
+        font-size: 20px;
+    }
+    .kitchen p {
+        font-size: 14px;
+    }
+
+    .divider-track {
+        font-size: 16px;
+        gap: 20px;
+        letter-spacing: 6px;
+    }
+    .divider {
+        padding: 8px 0;
+    }
+}
+
+min-width: 600px {
+    .kitchen-content {
+        max-width: 600px;
+    }
+    .kitchen h2 {
+        font-size: 30px;
+    }
+    .kitchen p {
+        font-size: 18px;
+    }
+}
+/* ============================================================
+   МЕНЮ (ЦЕНЫ РОВНО, БЕЗ ТОЧЕК)
+   ============================================================ */
+
+.menu-section {
+    padding: 50px 0 40px;
+    background: #0a0a0a;
+    position: relative;
+}
+
+/* Декоративная линия сверху */
+.menu-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #c9a84c, transparent);
+}
+
+.menu-section h2 {
+    text-align: center;
+    color: #c9a84c;
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.menu-subtitle {
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-bottom: 28px;
+}
+
+.menu-list {
+    max-width: 480px;
+    margin: 0 auto;
+    display: table;
+    width: 100%;
+}
+
+.menu-item {
+    display: table-row;
+}
+
+.menu-item:last-child .menu-name,
+.menu-item:last-child .menu-price {
+    border-bottom: none;
+}
+
+.menu-name {
+    display: table-cell;
+    padding: 10px 0;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    white-space: nowrap;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.menu-weight {
+    color: #888;
+    font-size: 12px;
+    font-weight: 400;
+    margin-left: 6px;
+}
+
+.menu-price {
+    display: table-cell;
+    padding: 10px 0 10px 20px;
+    color: #c9a84c;
+    font-weight: 700;
+    font-size: 17px;
+    text-align: right;
+    white-space: nowrap;
+    border-bottom: 1px solid #1a1a1a;
+    width: 1%;
+}
+
+/* ===== ЗОЛОТЫЕ АКЦЕНТЫ ===== */
+.menu-item.highlight .menu-name {
+    color: #c9a84c;
+}
+
+.menu-item.highlight .menu-weight {
+    color: #b8a060;
+}
+
+.menu-item.highlight .menu-price {
+    color: #f5d78c;
+    font-size: 18px;
+}
+
+/* ===== АДАПТИВ ===== */
+max-width: 480px {
+    .menu-section {
+        padding: 35px 0 25px;
+    }
+    .menu-section h2 {
+        font-size: 20px;
+        letter-spacing: 2px;
+    }
+    .menu-subtitle {
+        font-size: 12px;
+        margin-bottom: 18px;
+    }
+    .menu-name {
+        font-size: 14px;
+        padding: 8px 0;
+    }
+    .menu-weight {
+        font-size: 11px;
+        margin-left: 4px;
+    }
+    .menu-price {
+        font-size: 15px;
+        padding-left: 12px;
+    }
+    .menu-item.highlight .menu-price {
+        font-size: 16px;
+    }
+}
+
+min-width: 600px {
+    .menu-list {
+        max-width: 600px;
+    }
+    .menu-name {
+        font-size: 18px;
+        padding: 12px 0;
+    }
+    .menu-price {
+        font-size: 19px;
+        padding-left: 30px;
+    }
+    .menu-item.highlight .menu-price {
+        font-size: 20px;
+    }
+}
